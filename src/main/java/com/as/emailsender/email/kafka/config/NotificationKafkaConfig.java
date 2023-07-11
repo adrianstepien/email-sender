@@ -2,7 +2,6 @@ package com.as.emailsender.email.kafka.config;
 
 import com.as.emailsender.email.kafka.dto.NotificationDto;
 import org.apache.kafka.clients.admin.AdminClientConfig;
-import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,19 +32,11 @@ public class NotificationKafkaConfig {
     }
 
     @Bean
-    public NewTopic topic1() {
-        return new NewTopic("baeldung", 1, (short) 1);
-    }
-
-    @Bean
     public ConsumerFactory<String, NotificationDto> consumerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(
                 ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
                 bootstrapAddress);
-        /*props.put(
-                ConsumerConfig.GROUP_ID_CONFIG,
-                groupId);*/
         props.put(
                 ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,
                 StringDeserializer.class);
