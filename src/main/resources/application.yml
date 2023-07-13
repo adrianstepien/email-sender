@@ -1,9 +1,16 @@
 server:
   port : 8081
-spring:
-  kafka:
-    bootstrap-servers: localhost:9092
 
-kafka:
-  notification:
-    topic: notification_topic
+cloud:
+  aws:
+    stack:
+      auto: false
+    region:
+      static: us-east-1
+      auto: false
+    credentials:
+      access-key: test-key
+      secret-key: test-secret
+    queue:
+      uri: http://localhost:4566
+      name: my-queue
